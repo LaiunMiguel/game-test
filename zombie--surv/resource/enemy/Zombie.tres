@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=8 format=3 uid="uid://bxssb54jvnvnm"]
+
+[ext_resource type="Script" uid="uid://34romf81xc8x" path="res://scripts/resource/Enemy.gd" id="1_feccv"]
+[ext_resource type="Texture2D" uid="uid://bbdipsasipk4j" path="res://assets/sprites/Enemies/Zombie.png" id="2_ksjbe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1atxd"]
+atlas = ExtResource("2_ksjbe")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsktu"]
+atlas = ExtResource("2_ksjbe")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqdm4"]
+atlas = ExtResource("2_ksjbe")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsypp"]
+atlas = ExtResource("2_ksjbe")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hecn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1atxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsktu")
+}],
+"loop": true,
+"name": &"Walk_down",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqdm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsypp")
+}],
+"loop": true,
+"name": &"Walk_up",
+"speed": 2.0
+}]
+
+[resource]
+script = ExtResource("1_feccv")
+id = 1
+name = "Common Zombie"
+damage = 5.0
+max_hp = 30
+knockback_recovery = 3.5
+speed = 15.0
+exp_reward = 1
+drop_chance = 0.5
+sprite_texture = SubResource("SpriteFrames_2hecn")
+size_scale = 1.0
+description = "Normal Zombie"
+metadata/_custom_type_script = "uid://34romf81xc8x"

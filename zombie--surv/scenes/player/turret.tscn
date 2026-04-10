@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba5kfb0v3i2al"]
+
+[ext_resource type="Script" uid="uid://bjayrn1hp5bng" path="res://scripts/player/turrets_handler.gd" id="1_fjcyd"]
+[ext_resource type="Texture2D" uid="uid://bqtmiae36alyn" path="res://assets/sprites/Guns/Sniper_turret.png" id="2_eujmc"]
+
+[node name="Turret" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_fjcyd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_eujmc")
+
+[node name="cooldown" type="Timer" parent="."]
+
+[node name="audioManager" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="timeout" from="cooldown" to="." method="_on_attack_speed_timeout"]

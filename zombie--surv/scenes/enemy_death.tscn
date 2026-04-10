@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://oiqwfw1y18h"]
+
+[ext_resource type="Script" uid="uid://lehow2sflds7" path="res://scripts/enemy_death.gd" id="2_w8rse"]
+
+[node name="EnemyDeath" type="AnimatedSprite2D"]
+animation = &"Death"
+script = ExtResource("2_w8rse")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

@@ -1,0 +1,171 @@
+[gd_scene load_steps=13 format=3 uid="uid://beib14y6lqri1"]
+
+[ext_resource type="Script" uid="uid://jhu3sasn7bvb" path="res://scripts/gui/item_option.gd" id="1_ggsbn"]
+[ext_resource type="PackedScene" uid="uid://qreu2218ujs6" path="res://scenes/utils/basic_button.tscn" id="2_3iax0"]
+[ext_resource type="Texture2D" uid="uid://bvapwataaires" path="res://assets/sprites/close.png" id="3_175qx"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0nvmu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3iax0"]
+font_size = 9
+outline_size = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32ioi"]
+atlas = ExtResource("3_175qx")
+region = Rect2(0, 0, 221, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx0x4"]
+atlas = ExtResource("3_175qx")
+region = Rect2(221, 0, 221, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiqy1"]
+atlas = ExtResource("3_175qx")
+region = Rect2(442, 0, 221, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5v7co"]
+atlas = ExtResource("3_175qx")
+region = Rect2(663, 0, 221, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joqeu"]
+atlas = ExtResource("3_175qx")
+region = Rect2(884, 0, 221, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8jd6"]
+atlas = ExtResource("3_175qx")
+region = Rect2(1105, 0, 221, 63)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wmub2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32ioi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qx0x4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiqy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5v7co")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joqeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8jd6")
+}],
+"loop": false,
+"name": &"closing",
+"speed": 7.0
+}]
+
+[node name="ItemOption" type="Control"]
+custom_minimum_size = Vector2(217, 70)
+layout_mode = 3
+anchor_right = 0.1
+anchor_bottom = 0.178
+offset_right = 153.0
+offset_bottom = 5.92
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_ggsbn")
+
+[node name="Item" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 72.0
+offset_bottom = 40.0
+
+[node name="marco" type="ColorRect" parent="Item"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 67.0
+offset_bottom = 35.0
+color = Color(0, 0, 0, 1)
+
+[node name="ItemIcon" type="TextureRect" parent="Item"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 66.0
+offset_bottom = 34.0
+texture = SubResource("PlaceholderTexture2D_0nvmu")
+
+[node name="Price" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 47.0
+offset_right = 214.0
+offset_bottom = 63.0
+
+[node name="marco" type="ColorRect" parent="Price"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 210.0
+offset_bottom = 15.0
+color = Color(0, 0, 0, 1)
+
+[node name="btn_buy" parent="Price" instance=ExtResource("2_3iax0")]
+layout_mode = 0
+offset_right = 212.0
+offset_bottom = 16.0
+theme_override_font_sizes/font_size = 18
+text = ""
+flat = true
+
+[node name="lbl_price" type="Label" parent="Price"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 212.0
+offset_bottom = 17.0
+text = "$100"
+label_settings = SubResource("LabelSettings_3iax0")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="lbl_name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 73.0
+offset_right = 219.0
+offset_bottom = 13.0
+text = "Mi name "
+label_settings = SubResource("LabelSettings_3iax0")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="lbl_description" type="Label" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 13.0
+offset_right = 222.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 9
+text = "+ turret damage asdasdasdasd
+
+"
+autowrap_mode = 2
+
+[node name="lbl_description2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 28.0
+offset_right = 221.0
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 9
+text = "- speed
+"
+autowrap_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(108, 30.75)
+scale = Vector2(1, 1.02381)
+sprite_frames = SubResource("SpriteFrames_wmub2")
+animation = &"closing"
+
+[connection signal="click_end" from="Price/btn_buy" to="." method="_on_btn_buy_click_end"]

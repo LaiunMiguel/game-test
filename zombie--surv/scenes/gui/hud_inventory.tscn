@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0huy2hm38n70"]
+
+[ext_resource type="Script" uid="uid://diqyt5025d8bs" path="res://scripts/gui/hud_inventory.gd" id="1_lyeyq"]
+[ext_resource type="PackedScene" uid="uid://c70dxsrksnpgs" path="res://scenes/gui/item_container.tscn" id="1_rmfei"]
+
+[node name="HudInventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -640.0
+offset_bottom = -360.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lyeyq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -32.0
+offset_right = 134.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Item_Container" parent="HBoxContainer" instance=ExtResource("1_rmfei")]
+layout_mode = 2
+slot_number = 1
+
+[node name="Item_Container2" parent="HBoxContainer" instance=ExtResource("1_rmfei")]
+layout_mode = 2
+slot_number = 2
+
+[node name="Item_Container3" parent="HBoxContainer" instance=ExtResource("1_rmfei")]
+layout_mode = 2
+slot_number = 3
+
+[node name="Item_Container4" parent="HBoxContainer" instance=ExtResource("1_rmfei")]
+layout_mode = 2
+slot_number = 4

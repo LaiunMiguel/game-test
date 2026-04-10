@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=8 format=3 uid="uid://cpiac0diugfnm"]
+
+[ext_resource type="PackedScene" uid="uid://ce2dv0qtmsc4q" path="res://scenes/player/attacks/common_bullet.tscn" id="1_fxtpy"]
+[ext_resource type="Texture2D" uid="uid://clnequeru12v1" path="res://assets/sprites/Guns/oldPistol.png" id="2_0ce1j"]
+[ext_resource type="Script" uid="uid://doh2v0pmctywq" path="res://scripts/resource/Weapon.gd" id="3_8qida"]
+[ext_resource type="AudioStream" uid="uid://dlterbx5amlel" path="res://assets/sounds/shoot_Deagle.wav" id="5_8qida"]
+[ext_resource type="Script" uid="uid://dmp3jyag6kbdq" path="res://scripts/player/attacks/shootin/basic_shoot.gd" id="5_d5as2"]
+[ext_resource type="Texture2D" uid="uid://va4tfu3fgs47" path="res://assets/sprites/Guns/pistol_turret.png" id="7_0hpd1"]
+
+[sub_resource type="Resource" id="Resource_hfjba"]
+script = ExtResource("5_d5as2")
+metadata/_custom_type_script = "uid://dmp3jyag6kbdq"
+
+[resource]
+script = ExtResource("3_8qida")
+id = 1
+icon = ExtResource("2_0ce1j")
+texture = ExtResource("2_0ce1j")
+turret_texture = ExtResource("7_0hpd1")
+shoot_sound = ExtResource("5_8qida")
+name = "Desert Eagle"
+price = 0
+damage = 10.0
+penetration = 1
+reload_speed = 1.5
+attackspeed = 0.5
+max_ammo = 10
+shooter_type = SubResource("Resource_hfjba")
+bullet_scene = ExtResource("1_fxtpy")
+turret_damage = 5.0
+turret_penetration = 1
+turret_attackspeed = 1.0
+description = "Sus disparos penetran"
+firstLabel = "+Standard Damage"
+secondLabel = "+Standard Speed"
+metadata/_custom_type_script = "uid://doh2v0pmctywq"

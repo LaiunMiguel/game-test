@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=9 format=3 uid="uid://cwir6d3j5okfr"]
+
+[ext_resource type="PackedScene" uid="uid://ba23ya6ply16s" path="res://scenes/player/attacks/shotgun_bullet.tscn" id="1_5b47j"]
+[ext_resource type="Texture2D" uid="uid://cwncodhpv7lw1" path="res://assets/sprites/Guns/ShotgunIcon.png" id="2_5b47j"]
+[ext_resource type="Script" uid="uid://doh2v0pmctywq" path="res://scripts/resource/Weapon.gd" id="3_5kgka"]
+[ext_resource type="AudioStream" uid="uid://vy5g10cvmnnv" path="res://assets/sounds/shotgun.mp3" id="4_wyl2v"]
+[ext_resource type="Script" uid="uid://cvkye4brg4hss" path="res://scripts/player/attacks/shootin/shotgun_shooter.gd" id="5_2krap"]
+[ext_resource type="Texture2D" uid="uid://cb0ew6y8jopu4" path="res://assets/sprites/Guns/Shotgun.png" id="6_jwf6m"]
+[ext_resource type="Texture2D" uid="uid://bf77h8sg2xo87" path="res://assets/sprites/Guns/Shotgun_turret.png" id="7_mycko"]
+
+[sub_resource type="Resource" id="Resource_7yo2u"]
+script = ExtResource("5_2krap")
+pellets = 5
+spread_angle_deg = 20.0
+metadata/_custom_type_script = "uid://cvkye4brg4hss"
+
+[resource]
+script = ExtResource("3_5kgka")
+id = 2
+icon = ExtResource("2_5b47j")
+texture = ExtResource("6_jwf6m")
+turret_texture = ExtResource("7_mycko")
+shoot_sound = ExtResource("4_wyl2v")
+name = "Shotgun"
+price = 15
+damage = 8.0
+penetration = 1
+reload_speed = 1.0
+attackspeed = 1.0
+max_ammo = 6
+shooter_type = SubResource("Resource_7yo2u")
+bullet_scene = ExtResource("1_5b47j")
+turret_damage = 4.0
+turret_penetration = 1
+turret_attackspeed = 2.0
+description = "Dispara multiples cartuchos"
+firstLabel = "+ Multiple Bullets"
+secondLabel = "- Slow attack speed"
+metadata/_custom_type_script = "uid://doh2v0pmctywq"

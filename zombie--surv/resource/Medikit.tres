@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ConsumableData" load_steps=3 format=3 uid="uid://dj06vrx6gky5q"]
+
+[ext_resource type="Texture2D" uid="uid://r78acvbcpd03" path="res://assets/sprites/Cosumables/medikit.png" id="1_5x2sk"]
+[ext_resource type="Script" uid="uid://d0dh50u1m5irs" path="res://scripts/resource/Consumable.gd" id="2_p3mnj"]
+
+[resource]
+script = ExtResource("2_p3mnj")
+name = "Medikit"
+price = 10
+icon = ExtResource("1_5x2sk")
+description = "Heals 20 hp"
+firstLabel = "+Restore 20Hp"
+secondLabel = ""
+effect = 20
+metadata/_custom_type_script = "uid://d0dh50u1m5irs"

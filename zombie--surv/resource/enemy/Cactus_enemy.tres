@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=9 format=3 uid="uid://ryl65jbi7mu2"]
+
+[ext_resource type="Script" uid="uid://34romf81xc8x" path="res://scripts/resource/Enemy.gd" id="1_c3xpa"]
+[ext_resource type="Texture2D" uid="uid://pi7r60s84ssn" path="res://assets/sprites/Enemies/Cactus.png" id="2_l6da5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7u262"]
+atlas = ExtResource("2_l6da5")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dsbl"]
+atlas = ExtResource("2_l6da5")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq1cc"]
+atlas = ExtResource("2_l6da5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvlvr"]
+atlas = ExtResource("2_l6da5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5tkg"]
+atlas = ExtResource("2_l6da5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fty2e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7u262")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dsbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq1cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvlvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5tkg")
+}],
+"loop": true,
+"name": &"Walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7u262")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dsbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq1cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvlvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5tkg")
+}],
+"loop": true,
+"name": &"Walk_up",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_c3xpa")
+id = 7
+name = "Enemy"
+damage = 5.0
+max_hp = 100
+knockback_recovery = 3.5
+speed = 20.0
+exp_reward = 1009
+drop_chance = 1.0
+sprite_texture = SubResource("SpriteFrames_fty2e")
+size_scale = 1.0
+description = ""
+metadata/_custom_type_script = "uid://34romf81xc8x"

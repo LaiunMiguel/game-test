@@ -1,0 +1,363 @@
+[gd_scene load_steps=31 format=3 uid="uid://bldaa5a7mng4r"]
+
+[ext_resource type="Script" uid="uid://uglerlwtl3p3" path="res://scripts/player/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://m3ikcg57ixr1" path="res://scripts/player/inventory_handler.gd" id="2_myrg7"]
+[ext_resource type="PackedScene" uid="uid://bcn28t72x8vqw" path="res://scenes/utils/hurt_box.tscn" id="2_smehm"]
+[ext_resource type="PackedScene" uid="uid://ba5kfb0v3i2al" path="res://scenes/player/turret.tscn" id="2_ugbui"]
+[ext_resource type="Script" uid="uid://co3idgewh1dui" path="res://scripts/player/weapons_handler.gd" id="3_5gtgg"]
+[ext_resource type="Texture2D" uid="uid://cgxflkhd3c1fv" path="res://assets/sprites/cowboy_back.png" id="5_fm80t"]
+[ext_resource type="Texture2D" uid="uid://dn7wxlhnup8bl" path="res://assets/sprites/cowboy_side.png" id="5_gx1jg"]
+[ext_resource type="Texture2D" uid="uid://c18na385yu3tp" path="res://assets/sprites/cowboy.png" id="5_ugbui"]
+[ext_resource type="Texture2D" uid="uid://0bcvntv4ou07" path="res://assets/gui/exp_background.png" id="9_h17s1"]
+[ext_resource type="PackedScene" uid="uid://d0huy2hm38n70" path="res://scenes/gui/hud_inventory.tscn" id="9_ugbui"]
+[ext_resource type="Texture2D" uid="uid://fmb80xqta4pg" path="res://assets/gui/exp_progress.png" id="10_je7p5"]
+[ext_resource type="Texture2D" uid="uid://dbqpctm5qsb1s" path="res://assets/gui/healthbar.png" id="11_fm80t"]
+[ext_resource type="Texture2D" uid="uid://dx7mvi8k00fjp" path="res://assets/gui/health.png" id="12_gx1jg"]
+[ext_resource type="PackedScene" uid="uid://qreu2218ujs6" path="res://scenes/utils/basic_button.tscn" id="13_gx1jg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx1jg"]
+atlas = ExtResource("5_ugbui")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
+atlas = ExtResource("5_ugbui")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvlxm"]
+atlas = ExtResource("5_ugbui")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf5tr"]
+atlas = ExtResource("5_ugbui")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ydkj"]
+atlas = ExtResource("5_gx1jg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j4b4"]
+atlas = ExtResource("5_gx1jg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj68g"]
+atlas = ExtResource("5_gx1jg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugbui"]
+atlas = ExtResource("5_fm80t")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcs02"]
+atlas = ExtResource("5_fm80t")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgqa7"]
+atlas = ExtResource("5_fm80t")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ur7pv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gx1jg")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myrg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvlxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf5tr")
+}],
+"loop": true,
+"name": &"Walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ydkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3j4b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj68g")
+}],
+"loop": true,
+"name": &"Walk_side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugbui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcs02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgqa7")
+}],
+"loop": true,
+"name": &"Walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gx1jg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4r1p"]
+size = Vector2(38.9322, 41.5211)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5gtgg"]
+radius = 60.8276
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h17s1"]
+radius = 19.0066
+
+[sub_resource type="LabelSettings" id="LabelSettings_h17s1"]
+font_size = 14
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_g2els")
+
+[node name="inventory_handler" type="Node2D" parent="."]
+script = ExtResource("2_myrg7")
+
+[node name="weapons_handler" type="Node2D" parent="."]
+script = ExtResource("3_5gtgg")
+
+[node name="Torretas" type="Node2D" parent="weapons_handler"]
+unique_name_in_owner = true
+rotation = -6.28319
+
+[node name="Turret" parent="weapons_handler/Torretas" instance=ExtResource("2_ugbui")]
+unique_name_in_owner = true
+position = Vector2(30, 0)
+
+[node name="Turret2" parent="weapons_handler/Torretas" instance=ExtResource("2_ugbui")]
+unique_name_in_owner = true
+position = Vector2(-30, 0)
+
+[node name="Turret3" parent="weapons_handler/Torretas" instance=ExtResource("2_ugbui")]
+unique_name_in_owner = true
+position = Vector2(0, 30)
+
+[node name="Turret4" parent="weapons_handler/Torretas" instance=ExtResource("2_ugbui")]
+unique_name_in_owner = true
+position = Vector2(0, -30)
+
+[node name="ReloadTimer" type="Timer" parent="weapons_handler"]
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ur7pv")
+animation = &"Walk_side"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.756803, 0.810459)
+shape = SubResource("CircleShape2D_gx1jg")
+debug_color = Color(0.156013, 0.575089, 0.789943, 0.42)
+
+[node name="HurtBox" parent="." instance=ExtResource("2_smehm")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(1, 3)
+scale = Vector2(0.410971, 0.770692)
+shape = SubResource("RectangleShape2D_y4r1p")
+debug_color = Color(0, 0.113659, 0.226222, 0.42)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="GrabArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+shape = SubResource("CircleShape2D_5gtgg")
+
+[node name="CollectArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+scale = Vector2(1, 1.93536)
+shape = SubResource("CircleShape2D_h17s1")
+
+[node name="WeaponHolder" type="Node2D" parent="."]
+
+[node name="Weapon_sprite" type="Sprite2D" parent="WeaponHolder"]
+unique_name_in_owner = true
+position = Vector2(4, 4)
+scale = Vector2(0.5, 0.5)
+
+[node name="GUILayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="GUILayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="HudInventory" parent="GUILayer/GUI" instance=ExtResource("9_ugbui")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 280.0
+offset_top = 321.0
+offset_right = -360.0
+offset_bottom = -39.0
+
+[node name="ExpirenceBar" type="TextureProgressBar" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+value = 1.0
+texture_under = ExtResource("9_h17s1")
+texture_progress = ExtResource("10_je7p5")
+
+[node name="lbl_label" type="Label" parent="GUILayer/GUI/ExpirenceBar"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 263.0
+offset_right = 363.0
+offset_bottom = 20.0
+text = "Level:1"
+label_settings = SubResource("LabelSettings_h17s1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthBar" type="TextureProgressBar" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 0
+offset_left = 300.0
+offset_top = 300.0
+offset_right = 332.0
+offset_bottom = 308.0
+scale = Vector2(3, 1.5)
+texture_over = ExtResource("11_fm80t")
+texture_progress = ExtResource("12_gx1jg")
+
+[node name="LevelUpPanel" type="Panel" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+layout_mode = 0
+offset_left = 190.0
+offset_top = -250.0
+offset_right = 450.0
+
+[node name="lbl_levelUP" type="Label" parent="GUILayer/GUI/LevelUpPanel"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "The Shop is Open!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeOption" type="VBoxContainer" parent="GUILayer/GUI/LevelUpPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 50.0
+offset_right = 190.0
+offset_bottom = 100.0
+
+[node name="GameOverPanel" type="Panel" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+layout_mode = 0
+offset_left = 220.0
+offset_top = -250.0
+offset_right = 420.0
+
+[node name="lbl_result" type="Label" parent="GUILayer/GUI/GameOverPanel"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btn_menu" parent="GUILayer/GUI/GameOverPanel" instance=ExtResource("13_gx1jg")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 60.0
+offset_top = 200.0
+offset_right = 151.0
+offset_bottom = 236.0
+text = "Menu"
+
+[node name="lblTimer" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 280.0
+offset_top = 20.0
+offset_right = 360.0
+offset_bottom = 44.0
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BulletsLabel" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 25.0
+offset_top = 310.0
+offset_right = 109.0
+offset_bottom = 333.0
+text = "x/x"
+
+[node name="KillsLabel" type="Label" parent="GUILayer/GUI"]
+layout_mode = 0
+offset_left = 556.0
+offset_top = 334.0
+offset_right = 632.0
+offset_bottom = 357.0
+text = "Kills: X"
+
+[node name="AmmoBar" type="ProgressBar" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 5.0
+offset_top = 300.0
+offset_right = 20.0
+offset_bottom = 350.0
+max_value = 45.0
+value = 1.0
+fill_mode = 3
+show_percentage = false
+
+[node name="ReloadBar" type="ProgressBar" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 297.0
+offset_top = 150.0
+offset_right = 339.0
+offset_bottom = 158.0
+show_percentage = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-1, -1)
+
+[connection signal="timeout" from="weapons_handler/ReloadTimer" to="weapons_handler" method="_on_reload_timer_timeout"]
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt"]
+[connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
+[connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
+[connection signal="click_end" from="GUILayer/GUI/GameOverPanel/btn_menu" to="." method="_on_btn_menu_click_end"]
+
+[editable path="HurtBox"]

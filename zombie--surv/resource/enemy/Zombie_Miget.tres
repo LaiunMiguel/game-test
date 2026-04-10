@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=8 format=3 uid="uid://buhy7geybgu31"]
+
+[ext_resource type="Script" uid="uid://34romf81xc8x" path="res://scripts/resource/Enemy.gd" id="1_xtjct"]
+[ext_resource type="Texture2D" uid="uid://bbdipsasipk4j" path="res://assets/sprites/Enemies/Zombie.png" id="2_lk32y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw2n2"]
+atlas = ExtResource("2_lk32y")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ju28e"]
+atlas = ExtResource("2_lk32y")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3st2"]
+atlas = ExtResource("2_lk32y")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atiqa"]
+atlas = ExtResource("2_lk32y")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_46l1x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw2n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ju28e")
+}],
+"loop": true,
+"name": &"Walk_down",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3st2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atiqa")
+}],
+"loop": true,
+"name": &"Walk_up",
+"speed": 2.0
+}]
+
+[resource]
+script = ExtResource("1_xtjct")
+id = 2
+name = "Enemy"
+damage = 5.0
+max_hp = 25
+knockback_recovery = 3.5
+speed = 25.0
+exp_reward = 2
+drop_chance = 0.6
+sprite_texture = SubResource("SpriteFrames_46l1x")
+size_scale = 1.0
+description = ""
+metadata/_custom_type_script = "uid://34romf81xc8x"

@@ -1,0 +1,104 @@
+[gd_scene load_steps=17 format=3 uid="uid://brxhtj44dfovy"]
+
+[ext_resource type="Texture2D" uid="uid://sk0ine7ce1de" path="res://assets/sprites/grass.png" id="1_louek"]
+[ext_resource type="PackedScene" uid="uid://bldaa5a7mng4r" path="res://scenes/player/player.tscn" id="2_d82sd"]
+[ext_resource type="PackedScene" uid="uid://tbg5jtkcfdas" path="res://scenes/utils/enemy_spawner.tscn" id="3_dmgr2"]
+[ext_resource type="Script" uid="uid://f6675rxm7bbj" path="res://scripts/utils/spawn_info.gd" id="4_dmgr2"]
+[ext_resource type="Resource" uid="uid://bxssb54jvnvnm" path="res://resource/enemy/Zombie.tres" id="5_r7vx3"]
+[ext_resource type="Resource" uid="uid://buhy7geybgu31" path="res://resource/enemy/Zombie_Miget.tres" id="6_ln61k"]
+[ext_resource type="PackedScene" uid="uid://cwcnu4visny1w" path="res://scenes/exp_orb.tscn" id="6_r7vx3"]
+[ext_resource type="Resource" uid="uid://2cp2fs6tt6wb" path="res://resource/enemy/Big_Zombie.tres" id="7_8wxc8"]
+[ext_resource type="Resource" uid="uid://cih3v0824h5te" path="res://resource/enemy/Death.tres" id="8_5mlnw"]
+
+[sub_resource type="Resource" id="Resource_ln61k"]
+script = ExtResource("4_dmgr2")
+time_start = 0
+time_end = 60
+enemy_num = 1
+enemy_spawn_delay = 0
+enemyType = ExtResource("5_r7vx3")
+enemyCap = 300
+metadata/_custom_type_script = "uid://f6675rxm7bbj"
+
+[sub_resource type="Resource" id="Resource_n0m7i"]
+script = ExtResource("4_dmgr2")
+time_start = 60
+time_end = 120
+enemy_num = 2
+enemy_spawn_delay = 1
+enemyType = ExtResource("6_ln61k")
+enemyCap = 300
+metadata/_custom_type_script = "uid://f6675rxm7bbj"
+
+[sub_resource type="Resource" id="Resource_8wxc8"]
+script = ExtResource("4_dmgr2")
+time_start = 60
+time_end = 120
+enemy_num = 1
+enemy_spawn_delay = 0
+enemyType = ExtResource("5_r7vx3")
+enemyCap = 300
+metadata/_custom_type_script = "uid://f6675rxm7bbj"
+
+[sub_resource type="Resource" id="Resource_5mlnw"]
+script = ExtResource("4_dmgr2")
+time_start = 120
+time_end = 500
+enemy_num = 3
+enemy_spawn_delay = 20
+enemyType = ExtResource("7_8wxc8")
+enemyCap = 300
+metadata/_custom_type_script = "uid://f6675rxm7bbj"
+
+[sub_resource type="Resource" id="Resource_hukok"]
+script = ExtResource("4_dmgr2")
+time_start = 120
+time_end = 500
+enemy_num = 3
+enemy_spawn_delay = 1
+enemyType = ExtResource("6_ln61k")
+enemyCap = 300
+metadata/_custom_type_script = "uid://f6675rxm7bbj"
+
+[sub_resource type="Resource" id="Resource_6roal"]
+script = ExtResource("4_dmgr2")
+time_start = 120
+time_end = 500
+enemy_num = 3
+enemy_spawn_delay = 1
+enemyType = ExtResource("5_r7vx3")
+enemyCap = 300
+metadata/_custom_type_script = "uid://f6675rxm7bbj"
+
+[sub_resource type="Resource" id="Resource_3f440"]
+script = ExtResource("4_dmgr2")
+time_start = 500
+time_end = 1000
+enemy_num = 1
+enemy_spawn_delay = 120
+enemyType = ExtResource("8_5mlnw")
+enemyCap = 300
+metadata/_custom_type_script = "uid://f6675rxm7bbj"
+
+[node name="World" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+position = Vector2(203, 186)
+texture = ExtResource("1_louek")
+region_enabled = true
+region_rect = Rect2(-18148.6, -8902.17, 35098.6, 21855.7)
+
+[node name="Player" parent="." instance=ExtResource("2_d82sd")]
+position = Vector2(-1, -2)
+scale = Vector2(2, 2)
+
+[node name="LootHandler" type="Node2D" parent="." groups=["loot"]]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_dmgr2")]
+spanws = Array[ExtResource("4_dmgr2")]([SubResource("Resource_ln61k"), SubResource("Resource_n0m7i"), SubResource("Resource_8wxc8"), SubResource("Resource_5mlnw"), SubResource("Resource_hukok"), SubResource("Resource_6roal"), SubResource("Resource_3f440")])
+
+[node name="Coin" parent="." instance=ExtResource("6_r7vx3")]
+position = Vector2(17, 9)
+experience = 5

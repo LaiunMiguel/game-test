@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=11 format=3 uid="uid://d1rirp4mwgfpw"]
+
+[ext_resource type="Script" uid="uid://34romf81xc8x" path="res://scripts/resource/Enemy.gd" id="1_wcgrv"]
+[ext_resource type="Texture2D" uid="uid://cjkikaxs1f6uy" path="res://assets/sprites/Enemies/plant_enemy.png" id="2_k0rvl"]
+[ext_resource type="Texture2D" uid="uid://bu6crrjvy0f40" path="res://assets/sprites/Enemies/plant_enemy_2.png" id="2_n10gy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bluka"]
+atlas = ExtResource("2_n10gy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e5nc"]
+atlas = ExtResource("2_n10gy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fugd"]
+atlas = ExtResource("2_n10gy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n10gy"]
+atlas = ExtResource("2_k0rvl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu6d5"]
+atlas = ExtResource("2_k0rvl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ddy5"]
+atlas = ExtResource("2_k0rvl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bluka"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bluka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e5nc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fugd")
+}],
+"loop": true,
+"name": &"Walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n10gy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu6d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ddy5")
+}],
+"loop": true,
+"name": &"Walk_up",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_wcgrv")
+id = 6
+name = "Enemy"
+damage = 5.0
+max_hp = 100
+knockback_recovery = 3.5
+speed = 40.0
+exp_reward = 26
+drop_chance = 1.0
+sprite_texture = SubResource("SpriteFrames_bluka")
+size_scale = 1.0
+description = ""
+metadata/_custom_type_script = "uid://34romf81xc8x"

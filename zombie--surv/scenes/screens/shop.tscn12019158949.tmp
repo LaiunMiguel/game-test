@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkjolgqcruopd"]
+
+[ext_resource type="Script" uid="uid://daerum1suvb12" path="res://scripts/player/shop_handler.gd" id="1_yyjo8"]
+[ext_resource type="Texture2D" uid="uid://b0auekhqv5k3q" path="res://assets/sprites/shop.png" id="2_yyjo8"]
+[ext_resource type="PackedScene" uid="uid://qreu2218ujs6" path="res://scenes/utils/basic_button.tscn" id="3_eppsb"]
+[ext_resource type="Script" uid="uid://m3ikcg57ixr1" path="res://scripts/player/inventory_handler.gd" id="4_cw6bm"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_yyjo8")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(320, 181)
+texture = ExtResource("2_yyjo8")
+
+[node name="btn_next" parent="." instance=ExtResource("3_eppsb")]
+layout_mode = 0
+offset_left = 497.0
+offset_top = 177.0
+offset_right = 610.0
+offset_bottom = 213.0
+text = "Next Night"
+flat = true
+
+[node name="btn_exit" parent="." instance=ExtResource("3_eppsb")]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 254.0
+offset_right = 605.0
+offset_bottom = 290.0
+text = "Exit
+"
+flat = true
+
+[node name="btn_roll" parent="." instance=ExtResource("3_eppsb")]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 219.0
+offset_right = 353.0
+offset_bottom = 257.0
+text = ""
+flat = true
+autowrap_mode = 1
+
+[node name="shop_items" type="FlowContainer" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 161.0
+offset_right = 313.0
+offset_bottom = 323.0
+theme_override_constants/h_separation = 11
+theme_override_constants/v_separation = 15
+alignment = 1
+
+[node name="lbl_shop" type="Label" parent="."]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 122.0
+offset_right = 279.0
+offset_bottom = 145.0
+text = "SHOP OPEN "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lbl_reroll" type="Label" parent="."]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 157.0
+offset_right = 381.0
+offset_bottom = 310.0
+theme_override_font_sizes/font_size = 32
+text = "⟳"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="lbl_money" type="Label" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 7.0
+offset_right = 110.0
+offset_bottom = 30.0
+text = "Money: 30 $"
+
+[node name="shop_optionsHandler" type="Node" parent="."]
+script = ExtResource("4_cw6bm")
+
+[connection signal="click_end" from="btn_next" to="." method="_on_btn_next_click_end"]
+[connection signal="click_end" from="btn_exit" to="." method="_on_btn_exit_click_end"]
+[connection signal="click_end" from="btn_roll" to="." method="_on_btn_roll_click_end"]

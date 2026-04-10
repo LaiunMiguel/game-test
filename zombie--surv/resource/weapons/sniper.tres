@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=9 format=3 uid="uid://b47yuvhagq145"]
+
+[ext_resource type="PackedScene" uid="uid://ce2dv0qtmsc4q" path="res://scenes/player/attacks/common_bullet.tscn" id="1_4kwps"]
+[ext_resource type="Script" uid="uid://doh2v0pmctywq" path="res://scripts/resource/Weapon.gd" id="1_d5l3v"]
+[ext_resource type="Texture2D" uid="uid://b2m0uxsflva6c" path="res://assets/sprites/Guns/SniperIcon.png" id="1_x616h"]
+[ext_resource type="AudioStream" uid="uid://bd1vtq265nxwt" path="res://assets/sounds/shot1.wav" id="3_yt1gg"]
+[ext_resource type="Script" uid="uid://dmp3jyag6kbdq" path="res://scripts/player/attacks/shootin/basic_shoot.gd" id="5_ok87g"]
+[ext_resource type="Texture2D" uid="uid://doraxp0xoxuf1" path="res://assets/sprites/Guns/SniperInHand.png" id="6_ok87g"]
+[ext_resource type="Texture2D" uid="uid://bqtmiae36alyn" path="res://assets/sprites/Guns/Sniper_turret.png" id="7_ok87g"]
+
+[sub_resource type="Resource" id="Resource_nq6a7"]
+script = ExtResource("5_ok87g")
+metadata/_custom_type_script = "uid://dmp3jyag6kbdq"
+
+[resource]
+script = ExtResource("1_d5l3v")
+id = 4
+icon = ExtResource("1_x616h")
+texture = ExtResource("6_ok87g")
+turret_texture = ExtResource("7_ok87g")
+shoot_sound = ExtResource("3_yt1gg")
+name = "Sniper Rifle"
+price = 25
+damage = 100.0
+penetration = 10
+reload_speed = 2.0
+attackspeed = 1.5
+max_ammo = 10
+shooter_type = SubResource("Resource_nq6a7")
+bullet_scene = ExtResource("1_4kwps")
+turret_damage = 50.0
+turret_penetration = 5
+turret_attackspeed = 3.0
+description = "This is a weapon."
+firstLabel = "+ High Damage"
+secondLabel = "- Low Attack Speed"
+metadata/_custom_type_script = "uid://doh2v0pmctywq"

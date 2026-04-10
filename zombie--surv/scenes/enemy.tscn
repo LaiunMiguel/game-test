@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://bxc7awe2p6jqr"]
+
+[ext_resource type="Script" uid="uid://ex5634v15nfx" path="res://scripts/enemyBasic.gd" id="1_md484"]
+[ext_resource type="PackedScene" uid="uid://dfj85au71t2ca" path="res://scenes/utils/hit_box.tscn" id="1_nenq2"]
+[ext_resource type="Texture2D" uid="uid://bbdipsasipk4j" path="res://assets/sprites/Enemies/Zombie.png" id="2_c4w8v"]
+[ext_resource type="PackedScene" uid="uid://bcn28t72x8vqw" path="res://scenes/utils/hurt_box.tscn" id="2_md484"]
+[ext_resource type="Resource" uid="uid://bxssb54jvnvnm" path="res://resource/enemy/Zombie.tres" id="2_xwavj"]
+[ext_resource type="AudioStream" uid="uid://bp6bc5cytabij" path="res://assets/sounds/hurt.mp3" id="8_md484"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwavj"]
+atlas = ExtResource("2_c4w8v")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nenq2"]
+atlas = ExtResource("2_c4w8v")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_md484"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwavj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nenq2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipns3"]
+size = Vector2(15.1249, 29.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qclf"]
+size = Vector2(22, 34)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_md484"]
+radius = 10.0541
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_md484")
+enemy_data = ExtResource("2_xwavj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_md484")
+
+[node name="HitBox" parent="." instance=ExtResource("1_nenq2")]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(1.00444, 1)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(9.49459e-07, 2.25)
+scale = Vector2(1.05318, 1)
+shape = SubResource("RectangleShape2D_ipns3")
+debug_color = Color(0.719257, 0.173596, 0.104008, 0.42)
+
+[node name="HurtBox" parent="." instance=ExtResource("2_md484")]
+unique_name_in_owner = true
+visible = false
+collision_layer = 4
+collision_mask = 4
+hurt_box_type = 1
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_8qclf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+scale = Vector2(1, 0.960001)
+shape = SubResource("CircleShape2D_md484")
+debug_color = Color(0.156013, 0.575089, 0.789943, 0.42)
+
+[node name="snd_hurt" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("8_md484")
+volume_db = 6.575
+pitch_scale = 0.68
+
+[node name="checkDistanceEnemy" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt"]
+[connection signal="timeout" from="checkDistanceEnemy" to="." method="_on_hide_enemy_timeout"]
+
+[editable path="HitBox"]
+[editable path="HurtBox"]

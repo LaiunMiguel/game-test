@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce2dv0qtmsc4q"]
+
+[ext_resource type="Script" uid="uid://b564f27pl306d" path="res://scripts/player/attacks/pistol_bullet.gd" id="1_xl8ye"]
+[ext_resource type="Texture2D" uid="uid://dr8m068n5bumr" path="res://assets/sprites/Guns/pistol_bullet.png" id="2_xl8ye"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbynp"]
+size = Vector2(6, 8)
+
+[node name="PistolBullet" type="Area2D" groups=["attack"]]
+top_level = true
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_xl8ye")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -0.644027
+texture = ExtResource("2_xl8ye")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.19209e-07, -1.19209e-07)
+rotation = -0.644027
+shape = SubResource("RectangleShape2D_pbynp")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

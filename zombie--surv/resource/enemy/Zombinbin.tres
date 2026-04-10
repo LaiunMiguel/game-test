@@ -1,0 +1,117 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=17 format=3 uid="uid://c777vah47ooql"]
+
+[ext_resource type="Script" uid="uid://34romf81xc8x" path="res://scripts/resource/Enemy.gd" id="1_dvdiy"]
+[ext_resource type="Texture2D" uid="uid://borqx44tddyk" path="res://assets/sprites/Enemies/Zombie_Small/Zombie_Small_Down_walk-Sheet6.png" id="2_h24tm"]
+[ext_resource type="Texture2D" uid="uid://bgnybws8uqiry" path="res://assets/sprites/Enemies/Zombie_Small/Zombie_Small_Up_Walk-Sheet6.png" id="3_l2cdx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf1qm"]
+atlas = ExtResource("2_h24tm")
+region = Rect2(0, 0, 12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tn88v"]
+atlas = ExtResource("2_h24tm")
+region = Rect2(12, 0, 12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r2i7"]
+atlas = ExtResource("2_h24tm")
+region = Rect2(24, 0, 12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohg70"]
+atlas = ExtResource("2_h24tm")
+region = Rect2(36, 0, 12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twji7"]
+atlas = ExtResource("2_h24tm")
+region = Rect2(48, 0, 12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r23yt"]
+atlas = ExtResource("2_h24tm")
+region = Rect2(60, 0, 12, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luw47"]
+atlas = ExtResource("3_l2cdx")
+region = Rect2(65, 0, 13, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l3r2"]
+atlas = ExtResource("3_l2cdx")
+region = Rect2(52, 0, 13, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu7v6"]
+atlas = ExtResource("3_l2cdx")
+region = Rect2(39, 0, 13, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adq0o"]
+atlas = ExtResource("3_l2cdx")
+region = Rect2(26, 0, 13, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsk6i"]
+atlas = ExtResource("3_l2cdx")
+region = Rect2(13, 0, 13, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6d5r"]
+atlas = ExtResource("3_l2cdx")
+region = Rect2(0, 0, 13, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fc55x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf1qm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tn88v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r2i7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohg70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twji7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r23yt")
+}],
+"loop": true,
+"name": &"Walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luw47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l3r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu7v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adq0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsk6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6d5r")
+}],
+"loop": true,
+"name": &"Walk_up",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_dvdiy")
+id = 5
+name = "Bin Bin"
+damage = 8.0
+max_hp = 40
+knockback_recovery = 3.5
+speed = 50.0
+exp_reward = 10
+drop_chance = 0.2
+sprite_texture = SubResource("SpriteFrames_fc55x")
+size_scale = 1.0
+description = ""
+metadata/_custom_type_script = "uid://34romf81xc8x"

@@ -1,0 +1,150 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkjolgqcruopd"]
+
+[ext_resource type="Script" uid="uid://daerum1suvb12" path="res://scripts/player/shop_handler.gd" id="1_yyjo8"]
+[ext_resource type="Texture2D" uid="uid://b0auekhqv5k3q" path="res://assets/sprites/shop.png" id="2_yyjo8"]
+[ext_resource type="PackedScene" uid="uid://qreu2218ujs6" path="res://scenes/utils/basic_button.tscn" id="3_eppsb"]
+[ext_resource type="Script" uid="uid://m3ikcg57ixr1" path="res://scripts/player/inventory_handler.gd" id="4_cw6bm"]
+[ext_resource type="PackedScene" uid="uid://beib14y6lqri1" path="res://scenes/item_option.tscn" id="4_eppsb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eppsb"]
+font_size = 40
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_yyjo8")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(320, 181)
+texture = ExtResource("2_yyjo8")
+
+[node name="Reroll" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 297.0
+offset_right = 393.0
+offset_bottom = 337.0
+
+[node name="ColorRect2" type="ColorRect" parent="Reroll"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 322.0
+offset_bottom = 38.0
+color = Color(0, 0, 0, 1)
+
+[node name="lbl_reroll" type="Label" parent="Reroll"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = -9.0
+offset_right = 180.0
+offset_bottom = 46.0
+text = "Rerrol:"
+label_settings = SubResource("LabelSettings_eppsb")
+
+[node name="lbl_reroll_price" type="Label" parent="Reroll"]
+layout_mode = 0
+offset_left = 181.0
+offset_top = -9.0
+offset_right = 432.0
+offset_bottom = 46.0
+text = "100$"
+label_settings = SubResource("LabelSettings_eppsb")
+
+[node name="btn_roll" parent="Reroll" instance=ExtResource("3_eppsb")]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 323.0
+offset_bottom = 43.0
+text = ""
+flat = true
+autowrap_mode = 1
+
+[node name="btn_next" parent="." instance=ExtResource("3_eppsb")]
+layout_mode = 0
+offset_left = 497.0
+offset_top = 177.0
+offset_right = 610.0
+offset_bottom = 213.0
+text = "Next Night"
+flat = true
+
+[node name="btn_exit" parent="." instance=ExtResource("3_eppsb")]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 254.0
+offset_right = 605.0
+offset_bottom = 290.0
+text = "Exit
+"
+flat = true
+
+[node name="Slot1" parent="." instance=ExtResource("4_eppsb")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 237.0
+offset_top = 68.0
+offset_right = 457.0
+offset_bottom = 138.0
+
+[node name="Slot2" parent="." instance=ExtResource("4_eppsb")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 6.0
+offset_top = 95.0
+offset_right = 226.0
+offset_bottom = 165.0
+
+[node name="Slot3" parent="." instance=ExtResource("4_eppsb")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 237.0
+offset_top = 179.0
+offset_right = 457.0
+offset_bottom = 249.0
+
+[node name="Slot4" parent="." instance=ExtResource("4_eppsb")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 7.0
+offset_top = 206.0
+offset_right = 224.0
+offset_bottom = 276.0
+
+[node name="lbl_shop" type="Label" parent="."]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 9.0
+offset_right = 329.0
+offset_bottom = 32.0
+text = "SHOP OPEN "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lbl_money" type="Label" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 7.0
+offset_right = 110.0
+offset_bottom = 30.0
+text = "Money: 30 $"
+
+[node name="shop_optionsHandler" type="Node" parent="."]
+script = ExtResource("4_cw6bm")
+
+[connection signal="click_end" from="Reroll/btn_roll" to="." method="_on_btn_roll_click_end"]
+[connection signal="click_end" from="btn_next" to="." method="_on_btn_next_click_end"]
+[connection signal="click_end" from="btn_exit" to="." method="_on_btn_exit_click_end"]
+[connection signal="try_buy" from="Slot1" to="." method="_on_try_buy"]
+[connection signal="try_buy" from="Slot2" to="." method="_on_try_buy"]
+[connection signal="try_buy" from="Slot3" to="." method="_on_try_buy"]
+[connection signal="try_buy" from="Slot4" to="." method="_on_try_buy"]

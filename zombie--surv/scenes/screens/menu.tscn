@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgbb0vuvqebiu"]
+
+[ext_resource type="Script" uid="uid://d082wmwn064wy" path="res://scripts/menu.gd" id="1_5qq83"]
+[ext_resource type="PackedScene" uid="uid://qreu2218ujs6" path="res://scenes/utils/basic_button.tscn" id="1_ju8qk"]
+[ext_resource type="Texture2D" uid="uid://bjg2y0isparh2" path="res://assets/sprites/Background.png" id="2_vkuer"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5qq83")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("2_vkuer")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -105.0
+offset_top = -47.0
+offset_right = 535.0
+offset_bottom = 154.0
+theme_override_font_sizes/font_size = 72
+text = "Weird West"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btn_play" parent="." instance=ExtResource("1_ju8qk")]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 182.0
+offset_right = 608.0
+offset_bottom = 218.0
+text = "Play
+"
+flat = true
+
+[node name="btn_exit" parent="." instance=ExtResource("1_ju8qk")]
+layout_mode = 0
+offset_left = 481.0
+offset_top = 283.0
+offset_right = 572.0
+offset_bottom = 319.0
+text = "Exit
+"
+flat = true
+
+[node name="btn_options" parent="." instance=ExtResource("1_ju8qk")]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 233.0
+offset_right = 573.0
+offset_bottom = 269.0
+text = "Options"
+flat = true
+
+[node name="Movements" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="click_end" from="btn_play" to="." method="_on_btn_play_click_end"]
+[connection signal="click_end" from="btn_exit" to="." method="_on_btn_exit_click_end"]
+[connection signal="click_end" from="btn_options" to="." method="_on_btn_exit_click_end"]
+[connection signal="timeout" from="Movements" to="." method="_on_movements_timeout"]
