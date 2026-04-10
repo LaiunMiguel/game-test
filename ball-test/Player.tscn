@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://byqpkbkdkxf7s"]
+
+[ext_resource type="Script" uid="uid://yioalx23xe3p" path="res://player.gd" id="1_kpjcp"]
+[ext_resource type="Texture2D" uid="uid://dd8ge5wwddihx" path="res://ball.png" id="1_xhfnw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kpjcp"]
+radius = 16.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1635009908]
+slide_on_ceiling = false
+script = ExtResource("1_kpjcp")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1904766673]
+texture = ExtResource("1_xhfnw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2001442789]
+visible = false
+shape = SubResource("CircleShape2D_kpjcp")
+
+[node name="StopPower" type="Timer" parent="." unique_id=82679112]
+one_shot = true
+
+[connection signal="timeout" from="StopPower" to="." method="_on_stop_power_timeout"]

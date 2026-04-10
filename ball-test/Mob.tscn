@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b2gw5vi3vqarg"]
+
+[ext_resource type="Texture2D" uid="uid://bthfqpluxmu55" path="res://cube.png" id="1_584jx"]
+[ext_resource type="Script" uid="uid://srh5g66lvlq1" path="res://mob.gd" id="1_r6b5h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_584jx"]
+size = Vector2(32, 32)
+
+[node name="Mob" type="Area2D" unique_id=1792940935 groups=["mobs"]]
+collision_layer = 0
+script = ExtResource("1_r6b5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1152828518]
+shape = SubResource("RectangleShape2D_584jx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=726505091]
+scale = Vector2(2, 2)
+texture = ExtResource("1_584jx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
